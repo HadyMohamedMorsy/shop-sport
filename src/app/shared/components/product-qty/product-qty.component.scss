@@ -1,0 +1,21 @@
+:host ::ng-deep {
+  .p-inputnumber {
+    border-radius: 4px;
+    input {
+      background-color: transparent;
+      width: 40px;
+      height: 2rem;
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+    button {
+      background-color: transparent;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0px;
+      border: none;
+      color: #ff4d1c;
+    }
+  }
+}

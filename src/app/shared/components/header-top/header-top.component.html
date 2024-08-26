@@ -1,0 +1,85 @@
+@if(isLgScreen()){
+<div
+  class="py-3 gap-72 flex justify-between items-center px-6 border-0 border-b border-solid border-[#ff4d1c]"
+>
+  <div>
+    <img
+      src="assets/media/logo.jpg"
+      alt="luluatalshifaa"
+      class="w-28 object-contain cursor-pointer"
+      routerLink="/"
+    />
+  </div>
+
+  <div class="grow">
+    <p-autoComplete
+      [(ngModel)]="selectLink"
+      [suggestions]="menuList()"
+      (completeMethod)="globalSearch($event)"
+      (onBlur)="globalSearch($event)"
+      placeholder="{{ 'Search Now' | translate }}"
+      [showEmptyMessage]="true"
+      [completeOnFocus]="false"
+      [delay]="1000"
+      field="name"
+      styleClass="w-full"
+      [forceSelection]="true"
+    >
+      <ng-template let-product pTemplate="item">
+        <div
+          class="flex justify-between items-center mb-2"
+          (click)="showDialog(product)"
+        >
+          <img
+            [src]="editImageUrl(product.image_full_url)"
+            [alt]="product.name"
+            class="object-contain w-20 h-20"
+          />
+          <div>
+            <div class="flex justify-between">
+              <h2 class="text-base capitalize mb-1 line-clamp-2">
+                {{ product.name }}
+              </h2>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-[#ff4d1c] font-bold"
+                >دينار{{ product.price }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+  </div>
+
+  <div class="relative z-50">
+    <button
+      class="rounded-full cursor-pointer bg-transparent border-none font-size-0 hover:bg-[#f3f4f6]"
+      [value]="count()"
+      pBadge
+      pStyleClass="@next"
+      enterClass="hidden"
+      enterActiveClass="scalein"
+      leaveToClass="hidden"
+      leaveActiveClass="fadeout"
+      [hideOnOutsideClick]="true"
+    >
+      <i class="pi pi-cart-plus text-3xl"></i>
+    </button>
+    <div
+      class="absolute top-10 lg:left-0 hidden origin-top bg-white border-1 border-300 text-black"
+    >
+      @if(count()){
+      <app-cart-items-list></app-cart-items-list>
+      }@else {
+      <div class="w-96 flex justify-center items-center flex-col">
+        <img src="assets/media/empty-bag.png" alt="" />
+        <h2 class="my-8 font-semibold text-xl">
+          {{ "cart is empty" | translate }}
+        </h2>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+}

@@ -1,0 +1,38 @@
+<div class="w-96 shadow-xl">
+  <div class="bg-[#ff4d1c] flex justify-center p-2">
+    <h2 class="font-medium text-base text-white capitalize">
+      {{ "your Products" | translate }}
+      <strong>({{ cartItemCount() }})</strong>
+    </h2>
+  </div>
+
+  <div class="h-18 overflow-y-auto p-3">
+    <ul
+      class="list-none p-0 m-0 border-0 border-b border-solid border-[#ff4d1c]"
+    >
+      @for(item of cartItems(); track $index){
+      <li>
+        <app-product-item-list [productItem]="item"></app-product-item-list>
+      </li>
+      }
+    </ul>
+    <div
+      class="flex justify-between border-0 border-b border-solid border-[#ff4d1c] py-2 px-2"
+    >
+      <h2 class="text-base uppercase">{{ "Total" | translate }}</h2>
+      <span class="text-[#ff4d1c] font-bold">دينار{{ total() }}</span>
+    </div>
+
+    <div class="flex justify-center py-2">
+      @if(total()){
+      <a
+        pButton
+        class="w-3rem h-3rem text-white bg-black hover:bg-[#ff4d1c] border-none font-bold"
+        routerLink="/checkout"
+      >
+        {{ "check out" | translate }}
+      </a>
+      }
+    </div>
+  </div>
+</div>

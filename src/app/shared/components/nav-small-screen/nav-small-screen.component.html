@@ -1,0 +1,49 @@
+<div [class]="'flex justify-between items-center' + ' ' + navStyleClass()">
+  <div class="relative z-50">
+    <button
+      class="rounded-full cursor-pointer bg-transparent border-none font-size-0 hover:bg-[#f3f4f6]"
+      [value]="count()"
+      pBadge
+      pStyleClass="@next"
+      enterClass="hidden"
+      enterActiveClass="scalein"
+      leaveToClass="hidden"
+      leaveActiveClass="fadeout"
+      [hideOnOutsideClick]="true"
+    >
+      <i class="pi pi-cart-plus text-3xl"></i>
+    </button>
+
+    <div
+      class="absolute top-10 lg:left-0 hidden origin-top bg-white border-1 border-300 text-black"
+    >
+      @if(count()){
+      <app-cart-items-list></app-cart-items-list>
+      }@else {
+      <div class="w-72 flex justify-center items-center flex-col">
+        <img src="assets/media/empty-bag.png" alt="" />
+        <h2 class="my-8 font-semibold text-xl">
+          {{ "cart is empty" | translate }}
+        </h2>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="w-28">
+    <img
+      class="w-full cursor-pointer"
+      src="assets/media/logo.jpg"
+      routerLink="/"
+      alt="{{ 'logo' | translate }}"
+    />
+  </div>
+
+  <button
+    pButton
+    icon="pi pi-align-justify"
+    class="py-2 bg-[#ff4d1c] border-none rounded-full"
+    [ngClass]="{ 'custom-style-button': customStyleButton() }"
+    (click)="sidebarVisible.emit(true)"
+  ></button>
+</div>

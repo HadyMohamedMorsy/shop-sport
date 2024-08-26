@@ -1,0 +1,36 @@
+<article class="flex flex-col product-card overflow-hidden">
+  <div class="featured-Image relative">
+    <img
+      (click)="addCart(product())"
+      [src]="editImageUrl(product().image_full_url)"
+      [alt]="product().name"
+      class="w-full"
+    />
+    <div class="absolute view-btn">
+      <button
+        pButton
+        class="px-3 border-none text-sm h-10 py-0 bg-white text-black hover:bg-[#ff4d1c] hover:text-white"
+        (click)="showDialog()"
+        icon="pi pi-eye"
+      >
+        {{ "Quick View" | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="flex justify-between items-center my-2 mx-2">
+    <div class="product-info">
+      <h1 class="text-base">{{ product().name }}</h1>
+      <div>
+        <span class="text-[#ff4d1c] font-bold">دينار{{ product().price }}</span>
+      </div>
+    </div>
+    <button
+      pButton
+      class="px-3 border-none text-sm h-10 py-0 bg-black text-white hover:bg-[#c9b7b2]"
+      (click)="addCart(product())"
+      icon="pi pi-plus"
+    >
+      {{ "Add To Cart" | translate }}
+    </button>
+  </div>
+</article>

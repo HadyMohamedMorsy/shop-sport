@@ -1,0 +1,41 @@
+.container {
+  width: min(1390px, 95%);
+  margin-inline: auto;
+}
+
+.scalein {
+  animation: scalein 0.15s linear;
+}
+
+.fadeout {
+  animation: fadeout 0.15s linear;
+}
+
+.p-button{
+  .p-button-icon{
+    margin-inline: 10px;
+  }
+}
+
+@keyframes scalein {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.8);
+    transition: transform 0.12s cubic-bezier(0, 0, 0.2, 1), opacity 0.12s cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

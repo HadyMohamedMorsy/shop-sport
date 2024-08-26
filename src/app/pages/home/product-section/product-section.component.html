@@ -1,0 +1,40 @@
+  <p-dataView
+    [value]="records()"
+    layout="grid"
+    [lazy]="true"
+    [loading]="isLoading()"
+    (onLazyLoad)="loadProducts($event)"
+    [paginator]="true"
+    [rows]="rows()"
+    [totalRecords]="totalRecords()"
+    [pageLinks]="3"
+    [alwaysShowPaginator]="false"
+    [showFirstLastIcon]="true"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="{first} - {last} {{
+      'of' | translate
+    }} {totalRecords}"
+    [showJumpToPageDropdown]="false"
+  >
+    <ng-template pTemplate="grid" let-products>
+      <div
+        class="px-3 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 pt-4"
+      >
+        @for(product of products; track $index){
+        <app-product-card [product]="product"></app-product-card>
+        }
+      </div>
+    </ng-template>
+
+  <ng-template pTemplate="loadingicon">
+    @if (isLoading()) {
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 w-full pt-4">
+        @for (i of [1,2,3] ; track $index) {
+          <div class="col-12 sm:col-6 lg:col-4 scale-in-center">
+            <p-skeleton height="180px"></p-skeleton>
+          </div>
+        }
+      </div>
+    }
+  </ng-template>
+  </p-dataView>

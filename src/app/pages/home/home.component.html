@@ -1,0 +1,17 @@
+<!-- screen banner -->
+<div
+  class="bg-center bg-no-repeat bg-cover relative xl:py-64 py-48 banner-pages"
+  [ngStyle]="{ 'background-image': 'url(assets/media/sample-1.jpg)' }"
+></div>
+<section class="container my-4">
+  <app-section-title>
+    <span title>
+      {{ "Products" | translate }}
+    </span>
+  </app-section-title>
+
+  <div #triggerProducts></div>
+  @defer (on viewport(triggerProducts)) {
+  <app-product-section [id]="id"></app-product-section>
+  }
+</section>

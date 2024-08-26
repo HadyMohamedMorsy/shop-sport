@@ -1,0 +1,41 @@
+<div class="text-white">
+  <app-header-top />
+</div>
+
+<div class="bg-primary-color text-white">
+  <div class="container py-2 lg:py-4">
+    <!-- nav on hero slider only lg screen -->
+    @if(isXlScreen()){
+    <app-nav-large-screen  />
+    }
+    <!-- nav on small screen -->
+    @if(!isLgScreen()){
+    <app-nav-small-screen (sidebarVisible)="sidebarVisible.set(true)" />
+    }
+  </div>
+</div>
+
+<!-- nav scroll sticky -->
+@if(!sidebarVisible()){
+<nav appScrollNav class="hidden py-2 lg:py-4 slide-in-top">
+  <div class="container text-white">
+    <!-- nav on small screen -->
+    @if(!isXlScreen()){
+    <app-nav-small-screen
+      (sidebarVisible)="sidebarVisible.set(true)"
+      [customStyleButton]="false"
+    />
+    }
+
+    <!-- nav on lg screen -->
+    @if(isXlScreen()){
+    <app-nav-large-screen />
+    }
+  </div>
+</nav>
+}
+
+<!-- nav on sidebar screen -->
+@if(!isXlScreen()){
+<app-sidebar [(sidebarVisible)]="sidebarVisible" />
+}

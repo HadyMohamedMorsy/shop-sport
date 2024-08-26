@@ -1,0 +1,30 @@
+<div class="flex gap-3 surface-50 mb-2">
+  <img
+    [src]="editImageUrl(productItem().product.image_full_url)"
+    [alt]="productItem().product.name"
+    class="object-contain w-20 h-20"
+  />
+  <div class="flex-auto">
+    <div class="flex justify-between">
+      <h2 class="text-base capitalize mb-1 line-clamp-2">
+        {{ productItem().product.name }}
+      </h2>
+
+      <button
+        pButton
+        icon="pi pi-trash"
+        (click)="deleteItem()"
+        pTooltip="{{ 'Remove Item' | translate }}"
+        tooltipPosition="top"
+        class="p-button-text p-button-rounded p-button-plain text-400 w-2rem h-2rem text-xs text-red-500"
+      ></button>
+    </div>
+    <div class="flex justify-between items-center">
+      <span class="text-[#ff4d1c] font-bold"
+        >دينار{{ productItem().product.price_change }}</span
+      >
+
+      <app-product-qty [product]="productItem().product"></app-product-qty>
+    </div>
+  </div>
+</div>

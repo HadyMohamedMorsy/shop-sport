@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --body-font: "Cairo", sans-serif;
+}
+
+
+::-webkit-scrollbar {
+  width: 0px !important;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  margin: 0;
+}
+
+body {
+  text-align: start;
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+[dir="rtl"] {
+  * {
+    letter-spacing: normal !important;
+  }
+
+  input[type="email"]::placeholder {
+    text-align: end;
+  }
+}
+
+input::-webkit-input-placeholder {
+  color: inherit;
+}
+
+input::placeholder {
+  color: inherit;
+}
+
+iframe {
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+textarea {
+  resize: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+ul {
+  list-style: none;
+  margin-block: 0;
+  padding-inline-start: 0;
+}
+
+input{
+  width: 100%;
+}
+
+

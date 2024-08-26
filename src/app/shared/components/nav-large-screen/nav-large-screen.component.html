@@ -1,0 +1,31 @@
+<div class="flex justify-center items-center">
+  <ul class="flex gap-8 items-center">
+    @if(categories() && categories().length){
+    <li>
+      <a
+        class="hover:underline text-[#222] font-semibold"
+        [routerLink]="'/home'"
+        routerLinkActive="text-[#ff4d1c]"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        {{ "Home" | translate }}
+      </a>
+    </li>
+    @for(item of categories(); track $index){
+    <li>
+      <a
+        class="hover:underline text-[#222] font-semibold"
+        routerLinkActive="text-[#ff4d1c]"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="'/categroy/' + item.id"
+      >
+        {{ item.name | translate }}
+      </a>
+    </li>
+    } }@else { @for(item of [1,2,3,4,5,6,7,8]; track $index){
+    <li class="w-10">
+      <p-skeleton height="6px" styleClass="mb-2" />
+    </li>
+    } }
+  </ul>
+</div>

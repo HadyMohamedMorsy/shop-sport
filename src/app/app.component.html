@@ -1,0 +1,25 @@
+<ngx-loading-bar
+  color="var(--highlight-text-color)"
+  ref="http"
+  height="5px"
+  diameter="18px"
+  [includeSpinner]="false"
+/>
+
+<p-toast position="top-right" />
+
+<app-splash-screen></app-splash-screen>
+
+<div class="layout-wrapper">
+
+  <app-header></app-header>
+  
+  <app-scroll-top />
+
+  <main class="layout-main-container">
+    <router-outlet></router-outlet>
+  </main>
+
+
+  <app-footer></app-footer>
+</div>

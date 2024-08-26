@@ -1,0 +1,85 @@
+<p-sidebar
+  [(visible)]="sidebarVisible"
+  (onHide)="sidebarVisible.set(false)"
+  [modal]="false"
+  styleClass="text-white"
+>
+  <ng-template pTemplate="header">
+    <div class="flex justify-between items-center">
+      <div class="w-32">
+        <img
+          class="w-full"
+          src="assets/media/logo.jpg"
+          alt="{{ 'logo' | translate }}"
+        />
+      </div>
+    </div>
+    <div class="grow">
+      <p-autoComplete
+        [(ngModel)]="selectLink"
+        [suggestions]="menuList()"
+        (completeMethod)="globalSearch($event)"
+        (onBlur)="globalSearch($event)"
+        placeholder="{{ 'Search Now' | translate }}"
+        [showEmptyMessage]="true"
+        [completeOnFocus]="false"
+        [delay]="1000"
+        field="name"
+        styleClass="w-full"
+        [forceSelection]="true"
+      >
+        <ng-template let-product pTemplate="item">
+          <div
+            class="flex justify-between items-center mb-2"
+            (click)="showDialog(product)"
+          >
+            <img
+              [src]="editImageUrl(product.image_full_url)"
+              [alt]="product.name"
+              class="object-contain w-20 h-20"
+            />
+            <div>
+              <div class="flex justify-between">
+                <h2 class="text-base capitalize mb-1 line-clamp-2">
+                  {{ product.name }}
+                </h2>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[#ff4d1c] font-bold"
+                  >دينار{{ product.price }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-autoComplete>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="content">
+    <ul class="flex flex-col gap-4 mt-6">
+      <li class="border-solid border-b-gray-500 border-b pb-2">
+        <a
+          class="text-sm hover:text-[#ff4d1c] text-black"
+          [routerLink]="'/home'"
+          routerLinkActive="text-[#ff4d1c]"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ "Home" | translate }}
+        </a>
+      </li>
+      @for(item of categories(); track $index){
+      <li class="border-solid border-b-gray-500 border-b pb-2">
+        <a
+          [routerLink]="'/categroy/' + item.id"
+          routerLinkActive="text-[#ff4d1c]"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-sm hover:text-[#ff4d1c] text-black"
+        >
+          {{ item.name | translate }}
+        </a>
+      </li>
+      }
+    </ul>
+  </ng-template>
+</p-sidebar>

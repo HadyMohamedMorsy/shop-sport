@@ -1,0 +1,11 @@
+    <p-inputNumber [(ngModel)]="quantity"
+               (ngModelChange)="updateCart($event)"
+               [allowEmpty]="false"
+               [min]="1"
+               [showButtons]="true"
+               buttonLayout="horizontal"
+               spinnerMode="horizontal"
+               incrementButtonIcon="pi pi-plus"
+               [decrementButtonClass]="quantity === 1 ? 'disabled' : ''"
+               decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>

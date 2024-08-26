@@ -1,0 +1,11 @@
+:host ::ng-deep {
+  .p-dataview {
+    &-loading-overlay {
+      position: static;
+      background-color: transparent;
+    }
+    .p-component-overlay {
+      position: static;
+    }
+  }
+}

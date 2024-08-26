@@ -1,0 +1,25 @@
+.product-card {
+  .view-btn {
+    top: 50%;
+    inset-inline-end: 50%;
+    transform: translate(-50%, -750%);
+    transition: transform 0.2s linear;
+  }
+  .featured-Image {
+    cursor: pointer;
+    img {
+      opacity: transform 0.2s linear;
+    }
+  }
+  &:hover {
+    .featured-Image {
+      img {
+        opacity: 0.8;
+      }
+
+      .view-btn {
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

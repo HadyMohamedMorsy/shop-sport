@@ -1,0 +1,23 @@
+:host ::ng-deep {
+  .p-sidebar {
+    &-header {
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      .p-sidebar-close {
+        margin-inline-start: auto;
+        margin-left: 0;
+      }
+    }
+  }
+  .p-panel-header {
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+  .p-panel-content {
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+}

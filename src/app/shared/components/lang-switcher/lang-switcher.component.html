@@ -1,0 +1,28 @@
+<div class="card flex justify-content-center">
+  <p-dropdown
+    [options]="countries()"
+    [(ngModel)]="selectedCountry"
+    optionLabel="label"
+    optionValue="value"
+    (onChange)="switchLang(selectedCountry())"
+    [panelStyle]="{ width: '200px' }"
+    scrollHeight="300px"
+    panelStyleClass="custom-style-panel"
+    styleClass="custom-style-dropdown shadow-none"
+    placeholder="{{ 'select Language' | translate }}"
+  >
+    <ng-template pTemplate="selectedItem" let-select>
+      <div class="flex items-center gap-2">
+        <img style="width: 1rem; height: 1rem" [src]="select.image_full_url" />
+        <span [class]="styleColorlabel()">{{ select.label }}</span>
+      </div>
+    </ng-template>
+
+    <ng-template let-country pTemplate="item">
+      <div class="flex items-center gap-2">
+        <img style="width: 1rem; height: 1rem" [src]="country.image_full_url" />
+        <span class="text-sm">{{ country.label }}</span>
+      </div>
+    </ng-template>
+  </p-dropdown>
+</div>

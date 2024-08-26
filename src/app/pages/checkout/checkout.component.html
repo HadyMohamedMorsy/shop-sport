@@ -1,0 +1,177 @@
+<!-- screen banner -->
+<div
+  class="bg-center bg-no-repeat bg-cover relative xl:py-44 py-32 banner-pages"
+  [ngStyle]="{ 'background-image': 'url(assets/media/sample-1.jpg)' }"
+></div>
+
+<form
+  class="container my-6"
+  [formGroup]="formData"
+  (ngSubmit)="onSubmit(formData.value)"
+>
+  <div class="grid gap-6 lg:grid-cols-2 grid-cols-1">
+    <div class="lg:px-12 px-2">
+      <h3 class="mb-8 text-2xl font-light">{{ "Information" | translate }}</h3>
+
+      <div class="grid gap-3 grid-cols-2 mt-6">
+        <div class="my-2">
+          <p-floatLabel>
+            <input formControlName="first_name" pInputText class="w-full" />
+            <label for="first_name"> {{ "First Name" | translate }}</label>
+          </p-floatLabel>
+
+          @if(formData.get('first_name')?.touched &&
+          formData.get('first_name')?.invalid){
+          <div class="error-message">
+            @if(formData.get('first_name')?.errors?.required){
+            <span class="text-red-500">{{
+              "first_name is required" | translate
+            }}</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="my-2">
+          <p-floatLabel>
+            <input formControlName="last_name" pInputText class="w-full" />
+            <label for="last_name"> {{ "Last Name" | translate }}</label>
+          </p-floatLabel>
+
+          @if(formData.get('last_name')?.touched &&
+          formData.get('last_name')?.invalid){
+          <div class="error-message">
+            @if(formData.get('last_name')?.errors?.required){
+            <span class="text-red-500">{{
+              "last_name is required" | translate
+            }}</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="col-span-2 my-2">
+          <p-floatLabel>
+            <input
+              formControlName="shipping_address"
+              pInputText
+              class="w-full"
+            />
+            <label for="shipping_address">
+              {{ "Street Address" | translate }}</label
+            >
+          </p-floatLabel>
+
+          @if(formData.get('shipping_address')?.touched &&
+          formData.get('shipping_address')?.invalid){
+          <div class="error-message">
+            @if(formData.get('shipping_address')?.errors?.required){
+            <span class="text-red-500">{{
+              "shipping_address is required" | translate
+            }}</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="col-span-2 my-2">
+          <p-floatLabel>
+            <input formControlName="phone" pInputText class="w-full" />
+            <label for="Phone"> {{ "Phone" | translate }}</label>
+          </p-floatLabel>
+
+          @if(formData.get('Phone')?.touched && formData.get('Phone')?.invalid){
+          <div class="error-message">
+            @if(formData.get('Phone')?.errors?.required){
+            <span class="text-red-500">{{
+              "Phone is required" | translate
+            }}</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="col-span-2 my-2">
+          <p-floatLabel>
+            <input formControlName="phone_2" pInputText class="w-full" />
+            <label for="phone_2"> {{ "phone_2" | translate }}</label>
+          </p-floatLabel>
+
+          @if(formData.get('phone_2')?.touched &&
+          formData.get('phone_2')?.invalid){
+          <div class="error-message">
+            @if(formData.get('phone_2')?.errors?.required){
+            <span class="text-red-500">{{
+              "phone_2 is required" | translate
+            }}</span>
+            }
+          </div>
+          }
+        </div>
+
+        <div class="col-span-2 my-2">
+          <p-floatLabel>
+            <input formControlName="client_comment" pInputText class="w-full" />
+            <label for="client comment"> {{ "message" | translate }}</label>
+          </p-floatLabel>
+
+          @if(formData.get('client_comment')?.touched &&
+          formData.get('client_comment')?.invalid){
+          <div class="error-message">
+            @if(formData.get('client_comment')?.errors?.required){
+            <span class="text-red-500">{{
+              "client_comment is required" | translate
+            }}</span>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div>
+      @if(count()){
+      <div class="bg-[#ff4d1c] flex justify-center p-2">
+        <h2 class="font-medium text-base text-white capitalize">
+          {{ "your Products" | translate }}
+          <strong>({{ cartItemCount() }})</strong>
+        </h2>
+      </div>
+      <div class="h-18 overflow-y-auto p-3 grow">
+        <ul
+          class="list-none p-0 m-0 border-0 border-b border-solid border-[#ff4d1c]"
+        >
+          @for(item of cartItems(); track $index){
+          <li>
+            <app-product-item-list [productItem]="item"></app-product-item-list>
+          </li>
+          }
+        </ul>
+        <div
+          class="flex justify-between border-0 border-b border-solid border-[#ff4d1c] py-2 px-2"
+        >
+          <h2 class="text-base uppercase">{{ "Total" | translate }}</h2>
+          <span class="text-[#ff4d1c] font-bold">دينار{{ total() }}</span>
+        </div>
+
+        <div class="flex justify-center py-2">
+          <button
+            type="submit"
+            label="{{ 'send' | translate }}"
+            [loading]="loading()"
+            pButton
+            class="flex justify-center w-full h-3rem text-white bg-black hover:bg-[#ff4d1c] border-none font-bold"
+          ></button>
+        </div>
+      </div>
+      }@else {
+      <div class="flex justify-center items-center flex-col">
+        <img src="assets/media/empty-bag.png" alt="" />
+        <h2 class="my-8 font-semibold text-xl">
+          {{ "cart is empty" | translate }}
+        </h2>
+      </div>
+      }
+    </div>
+  </div>
+</form>

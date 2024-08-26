@@ -1,0 +1,43 @@
+:host ::ng-deep {
+  .custom-style-dropdown {
+    background-color: transparent;
+    color: #fff;
+    align-items: center;
+
+    .p-dropdown-label.p-placeholder {
+      color: inherit;
+    }
+
+    .p-dropdown-trigger {
+      color: inherit;
+    }
+  }
+
+  .p-inputtext {
+    padding: 0;
+  }
+
+  .p-dropdown-panel.custom-style-panel {
+    background-color: var(--primary-color);
+
+    .p-dropdown-items {
+
+      .p-dropdown-item {
+        padding: 0.35rem 0.65rem;
+        color: #fff;
+
+        &.p-highlight {
+          background-color: rgba(59, 130, 246, 0.24) !important;
+        }
+
+        &:not(.p-highlight):not(.p-disabled).p-focus {
+          background-color: rgba(59, 130, 246, 0.24) !important;
+        }
+
+        &:not(.p-highlight):not(.p-disabled):hover {
+          background-color: rgba(59, 130, 246, 0.24) !important;
+        }
+      }
+    }
+  }
+}

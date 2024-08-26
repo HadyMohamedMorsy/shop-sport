@@ -1,0 +1,37 @@
+.p-button:focus {
+  box-shadow: none;
+}
+
+.p-field .p-float-label input {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.pi-chevron-right,
+.pi-chevron-left,
+.pi-angle-left,
+.pi-angle-right,
+.pi-angle-double-left,
+.pi-angle-double-right,
+.pi-arrow-circle-left,
+.pi-arrow-circle-right,
+.pi-arrow-down-left,
+.pi-arrow-down-right,
+.pi-arrow-left,
+.pi-arrow-right,
+.pi-arrow-up-left,
+.pi-arrow-up-right,
+.pi-caret-left,
+.pi-caret-right,
+.pi-chevron-circle-left,
+.pi-chevron-circle-right {
+  [dir="rtl"] & {
+    transform: rotateY(180deg);
+  }
+}
+
+.p-button-label {
+  [dir="rtl"] & {
+    font-weight: 300;
+  }
+}
